@@ -1,0 +1,21 @@
+-- Make sure to use default knife (or batwing if you have) or this script will not work properly.
+local player = game.Players.LocalPlayer
+local knifedisplay = player.Character:WaitForChild('KnifeDisplay')
+
+local function makeNikScythe(display)
+	local mesh = display.Mesh
+	mesh.MeshId = "http://www.roblox.com/asset/?id=305826272"
+	mesh.TextureId = "rbxassetid://2533345412"
+	mesh.Scale = Vector3.new(1, 1, 1)
+	
+	display.Size = Vector3.new(0.25, 2.9, 1.6)
+end
+
+makeNikScythe(knifedisplay)
+
+player.Backpack.ChildAdded:Connect(function(child)
+	if child:IsA("Tool") and child.Name == "Knife" then
+		local handleknife = child.Handle
+		makeNikScythe(handleknife)
+	end
+end)
