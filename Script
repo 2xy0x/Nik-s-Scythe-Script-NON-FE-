@@ -17,5 +17,9 @@ player.Backpack.ChildAdded:Connect(function(child)
 	if child:IsA("Tool") and child.Name == "Knife" then
 		local handleknife = child.Handle
 		makeNikScythe(handleknife)
+		
+		if child:FindFirstChild('Dual') then
+			makeNikScythe(child:WaitForChild('Dual')
+		end
 	end
 end)
